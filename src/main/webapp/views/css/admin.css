@@ -1,0 +1,77 @@
+.table-height {
+  max-height: 320px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+tr {
+    font-size: 13px;
+}
+
+th,
+td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+td input {
+    width: 100%;
+}
+
+thead {
+    font-size: 12px;
+}
+
+td:nth-child(8) {
+    width: 10px;
+}
+
+th {
+  background-color: #f2f2f2;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+
+.sticky-row {
+  position: sticky;
+  top: 40px;
+  background-color: #ffffff;
+  z-index: 5;
+}
+
+
+tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+
+.button {
+  padding: 5px 10px;
+  margin: 2px;
+  cursor: pointer;
+  color: white;
+  background-color: blue;
+  border: none;
+  border-radius: 5px;
+}
+
+.delete {
+  background-color: red;
+}
+
+.edit {
+  background-color: green;
+}
+
+.admin-container {
+    padding-top: 16px;
+}

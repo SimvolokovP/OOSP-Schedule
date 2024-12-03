@@ -1,0 +1,176 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100..700&family=Roboto:wght@300;400;700&display=swap");
+
+body {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  background-color: #f0f0f0;
+  color: #333;
+  height: 100vh;
+}
+
+@font-face {
+  font-family: "name" format("woff2");
+  src: url(../fonts/url.woff2);
+  font-display: swap;
+  font-weight: weight;
+  font-style: normal;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+}
+
+.page-title {
+  text-align: center;
+  margin: 0;
+  font-size: 32px;
+  margin-bottom: 44px;
+}
+
+h1 {
+  color: #0056b3;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1300px;
+  padding: 0 10px;
+}
+
+.index-page__container {
+  padding-top: 24px;
+}
+
+.index-page__descr {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.settings {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 16px;
+  border-bottom: 2px solid #0056b3;
+}
+
+.settings__label,
+.auth__label {
+  display: flex;
+  flex-direction: column;
+  width: 144px;
+  gap: 8px;
+  font-weight: 300;
+  font-size: 18px;
+}
+
+.settings__submit,
+.toAdmin {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #0056b3;
+  color: #f0f0f0;
+  border: none;
+  width: 90px;
+  padding: 8px 0;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+.lessons {
+  height: 220px;
+}
+
+.lessons__empty {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+}
+
+.lessons__list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.lessons__list--item {
+  box-shadow: 2px 2px 2px 2px #87878740;
+  width: 450px;
+  display: flex;
+  flex-direction: column;
+  padding: 12px 8px;
+  border-radius: 8px;
+  gap: 12px;
+  position: relative;
+  background-color: #fff;
+}
+
+.lessons__list--item span {
+  font-weight: 300;
+  font-size: 18px;
+}
+
+.lessons__list--item h3 {
+  margin: 0;
+  font-weight: 700;
+  font-size: 24px;
+}
+
+.lessons__list--item div {
+  color: #0056b3;
+  font-weight: 700;
+}
+
+.lessons__item--stats {
+  position: absolute;
+  top: 12px;
+  right: 8px;
+  display: flex;
+  gap: 8px;
+}
+
+.lessons__item--stats div {
+  background-color: #0056b3;
+  color: #f0f0f0;
+  height: 18px;
+  min-width: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  padding: 2px 8px;
+}
+
+.auth-page__container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
