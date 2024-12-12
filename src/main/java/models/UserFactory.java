@@ -9,13 +9,16 @@ public class UserFactory {
         User user = null;
         switch (role) {
             case ADMIN:
-                user = new Admin(rs.getInt("id"), rs.getString("record"), rs.getString("password"), rs.getString("adminLevel"));
+                user = new Admin(rs.getInt("id"),
+                        rs.getString("record"), rs.getString("password"), rs.getString("adminLevel"));
                 break;
             case STUDENT:
-                user = new Student(rs.getInt("id"), rs.getString("record"), rs.getString("password"), rs.getInt("group"));
+                user = new Student(rs.getInt("id"),
+                        rs.getString("record"), rs.getString("password"), rs.getInt("group"));
                 break;
             case TEACHER:
-                user = new Teacher(rs.getInt("id"), rs.getString("record"), rs.getString("password"), rs.getString("department"));
+                user = new Teacher(rs.getInt("id"),
+                        rs.getString("record"), rs.getString("password"), rs.getString("department"));
                 break;
                 default:
                     throw new IllegalArgumentException("Unknown role: " + role);

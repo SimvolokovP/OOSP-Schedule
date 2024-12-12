@@ -14,27 +14,27 @@ public class UsersServiceImpl implements UsersService{
     }
     @Override
     public boolean createUser(User user) {
-        return false;
+        return userDao.add(user);
     }
 
     @Override
     public boolean updateUser(int id, User user) {
-        return false;
+        return userDao.edit(id, user);
     }
 
     @Override
     public boolean deleteUser(int id) {
-        return false;
+        return userDao.remove(id);
     }
 
     @Override
     public List<User> getUsers() {
-        return null;
+        return userDao.getList();
     }
 
     @Override
     public User getUserById(int id) {
-        return null;
+        return userDao.getById(id);
     }
 
     @Override

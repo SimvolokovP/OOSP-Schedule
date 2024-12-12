@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class UserDaoImpl implements Dao<User>{
@@ -37,18 +38,64 @@ public class UserDaoImpl implements Dao<User>{
     }
 
     @Override
-    public boolean edit(int id, User User) {
+    public boolean edit(int id, User user) {
+        String sql = "UPDATE users SET record = ?, password = ?, role = ?, adminLevel = ?, department = ?, `group` = ? WHERE id = ?";
+
+        try (PreparedStatement ps = connection.prepareStatement(sql)) {
+            ps.setString(1, user.getRecord());
+
+            String hashedPassword = BCrypt.withDefaults().hashToString(12, user.getPassword().toCharArray());
+            ps.setString(2, hashedPassword);
+
+            ps.setString(3, user.getRole().toString().toUpperCase());
+            insertUser(ps, user);
+            ps.setInt(7, id);
+
+            return ps.executeUpdate() == 1;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return false;
     }
 
     @Override
     public List<User> getList() {
-        return null;
+        List<User> users = new ArrayList<>();
+        String sql = "SELECT * FROM `users`";
+
+        try (PreparedStatement stmt = connection.prepareStatement(sql);
+             ResultSet rs = stmt.executeQuery()) {
+
+            while (rs.next()) {
+                User user = UserFactory.createUserFromResultSet(rs);
+                if (user != null) {
+                    users.add(user);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return users;
     }
 
     @Override
     public User getById(int id) {
-        return null;
+        String sql = "SELECT * FROM `users` WHERE id = ?";
+        User user = null;
+
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+            stmt.setInt(1, id);
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    user = UserFactory.createUserFromResultSet(rs);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return user;
     }
 
     @Override
@@ -57,11 +104,9 @@ public class UserDaoImpl implements Dao<User>{
         String sql = "DELETE FROM users WHERE id = ?";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setInt(1, id);
-            stmt.executeUpdate();
-            isDeleted = true;
+            isDeleted = stmt.executeUpdate() == 1;
         } catch (SQLException e) {
             e.printStackTrace();
-
         }
         return isDeleted;
     }

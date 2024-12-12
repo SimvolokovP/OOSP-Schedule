@@ -4,6 +4,7 @@
 <%
     User user = (User) session.getAttribute("user");
     boolean isAdminOrTeacher = (user != null) && (user.getRole() == UserRole.ADMIN || user.getRole() == UserRole.TEACHER);
+    boolean isAdmin = (user != null) && (user.getRole() == UserRole.ADMIN);
     if (!isAdminOrTeacher) {
     response.sendRedirect("login.jsp");
     return;
@@ -30,7 +31,7 @@
       <h2>Список Групп</h2>
 
       <%
-        if (isAdminOrTeacher) {
+        if (isAdmin) {
       %>
         <%@ include file="groupsTable.jsp" %>
       <%
@@ -38,6 +39,18 @@
       out.println("<p>У вас нет прав для доступа к таблице групп.</p>");
       }
       %>
+
+      <h2>Список Пользователей</h2>
+
+      <%
+              if (isAdmin) {
+            %>
+              <%@ include file="usersTable.jsp" %>
+            <%
+            } else {
+            out.println("<p>У вас нет прав для доступа к таблице пользователй.</p>");
+            }
+            %>
         </div>
       </main>
     </body>

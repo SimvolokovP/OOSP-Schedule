@@ -1,8 +1,14 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %> <%@ taglib
-uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> <%@ page
-import="models.User" %> <%@ page import="models.UserRole" %> <% User user =
-(User) session.getAttribute("user"); if (user == null) {
-response.sendRedirect("login.jsp"); return; } %>
+uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page import="models.User" %>
+<%@ page import="models.UserRole" %>
+
+<% User user = (User) session.getAttribute("user");
+    if (user == null) {
+        response.sendRedirect("login.jsp");
+        return;
+       }
+%>
 
 <html>
   <head>
